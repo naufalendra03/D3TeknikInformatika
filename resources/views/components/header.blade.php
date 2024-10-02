@@ -16,26 +16,13 @@
             <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                 <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent font-bold lg:text-primary-700 lg:p-0 " aria-current="page">Beranda</a>
+                        <a href="/" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent font-bold lg:text-primary-700 lg:p-0 " aria-current="page">Beranda</a>
                     </li>
                     <li>
                         <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ">Profil</a>
                     </li>
                     <li>
-                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto ">Akademik <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg></button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdownNavbar" class="z-20 hidden font-normal bg-white rounded-lg shadow w-44 ">
-                            <ul class="py-2 text-md lg:text-sm text-nowrap text-gray-700" aria-labelledby="dropdownLargeButton">
-                              <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Matakuliah</a>
-                              </li>
-                              <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Kalender Akademik</a>
-                              </li>
-                            </ul>
-                        </div>
+                        <a href="/akademik" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ">Akademik</a>
                     </li>
                     <li>
                         <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 ">Berita</a>

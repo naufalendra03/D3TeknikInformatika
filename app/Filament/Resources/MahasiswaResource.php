@@ -52,7 +52,7 @@ class MahasiswaResource extends Resource
                 Tables\Columns\TextColumn::make('telp_mhs')
                     ->label('Telepon')
                     ->searchable(), // Tambahkan pencarian di kolom Telepon
-                Tables\Columns\TextColumn::make('catatan')->label('Catatan Dosen'),
+                    Tables\Columns\TextColumn::make('catatan')->label('Catatan Dosen'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -75,7 +75,7 @@ class MahasiswaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMahasiswa::route('/'),
+            'index' => Pages\ListMahasiswas::route('/'),
             'create' => Pages\CreateMahasiswa::route('/create'),
             'edit' => Pages\EditMahasiswa::route('/{record}/edit'),
         ];

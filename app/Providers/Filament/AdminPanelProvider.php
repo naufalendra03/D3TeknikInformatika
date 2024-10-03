@@ -25,7 +25,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('sistem-monitoring-mahasiswa')
+            ->path('login_user')
             ->passwordReset()
             ->profile()
             ->login()

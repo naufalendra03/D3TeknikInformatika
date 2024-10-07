@@ -16,19 +16,10 @@ class BeritaAcara extends Model
         'judul', 'slug', 'isi', 'gambar', 'author', 'category', 'published_date', 'tags',
     ];
 
-    // Mutator untuk membuat slug otomatis dari judul dan memastikan unik-nya slug
+    // Mutator untuk membuat slug otomatis dari judul
     public function setJudulAttribute($value)
     {
         $this->attributes['judul'] = $value;
-        
-        // Generate basic slug
-        $slug = Str::slug($value, '-');
-
-        // Periksa apakah slug sudah ada di database
-        $count = static::where('slug', 'LIKE', "{$slug}%")->count();
-
-        // Jika slug sudah ada, tambahkan angka untuk membuatnya unik
-        $this->attributes['slug'] = $count ? "{$slug}-{$count}" : $slug;
+        $this->attributes['slug'] = Str::slug($value, '-');
     }
 }
-

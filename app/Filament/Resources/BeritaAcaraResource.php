@@ -22,6 +22,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TagsInput;
+use Illuminate\Support\Str;
 
 class BeritaAcaraResource extends Resource
 {
@@ -37,59 +38,46 @@ class BeritaAcaraResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
-    {
+{
     return $form
         ->schema([
             Forms\Components\Grid::make(2)
                 ->schema([
                     TextInput::make('judul')
-                        ->label('Title')
-                        ->required(),
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set) {
+                            if ($operation === 'edit') {
+                                return;
+                            }
+                            $set('slug', Str::slug($state));
+                        }),
+                    TextInput::make('slug')
+                        ->label('Slug')
+                        ->rules(['required', 'unique:berita_acaras,slug'])
+                        ->helperText('Auto-generated from the title if left blank'),
                 ]),
 
-            TextInput::make('slug')
-                ->label('Slug')
-                ->rules(['required', 'unique:berita_acaras,slug'])
-                ->helperText('Auto-generated from the title if left blank'),
-
+            // RichEditor ditempatkan di luar Grid
             RichEditor::make('isi')
                 ->label('Content')
-                ->required(),
+                ->required()
+                ->columnSpan('full'), // Membuatnya mengambil seluruh lebar form
 
             Forms\Components\Grid::make(2)
                 ->schema([
-                    Select::make('author')
-                        ->label('Author')
-                        ->options([
-                            'author1' => 'Author 1',
-                            'author2' => 'Author 2',
-                        ])
-                        ->required(),
+                    FileUpload::make('gambar')
+                    ->label('Upload Image'),
 
-                    Select::make('category')
-                        ->label('Category')
-                        ->options([
-                            'category1' => 'Category 1',
-                            'category2' => 'Category 2',
-                        ])
-                        ->required(),
-                ]),
 
-            Forms\Components\Grid::make(2)
-                ->schema([
                     DatePicker::make('published_date')
-                        ->label('Published Date'),
-                    
-                    TagsInput::make('tags')
-                        ->label('Tags')
-                        ->placeholder('New tag'),
+                        ->label('Published Date')
+                        ->default(now()) // Set default value to today's date
+                        ->required(),
                 ]),
 
-            FileUpload::make('gambar')
-                ->label('Upload Image'),
+            
         ]);
-
-    }
+}
 
     public static function table(Table $table): Table
     {
@@ -113,12 +101,10 @@ class BeritaAcaraResource extends Resource
                     ->limit(50), // Menampilkan 50 karakter pertama
 
                 // Kolom untuk menampilkan nama penulis
-                TextColumn::make('author')
-                    ->label('Author'),
+            
 
                 // Kolom untuk menampilkan kategori
-                TextColumn::make('category')
-                    ->label('Category'),
+            
 
                 // Kolom untuk menampilkan tanggal publikasi
                 TextColumn::make('published_date')
@@ -126,9 +112,7 @@ class BeritaAcaraResource extends Resource
                 ->date(), // Menambahkan format tanggal
 
                 // Kolom untuk menampilkan tags
-                TagsColumn::make('tags')
-                    ->label('Tags'),
-
+                
                 // Kolom untuk menampilkan gambar
                 ImageColumn::make('gambar')
                     ->label('Image'),
@@ -138,6 +122,7 @@ class BeritaAcaraResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -157,6 +142,7 @@ class BeritaAcaraResource extends Resource
             'index' => Pages\ListBeritaAcaras::route('/'),
             'create' => Pages\CreateBeritaAcara::route('/create'),
             'edit' => Pages\EditBeritaAcara::route('/{record}/edit'),
+            'view' => Pages\ViewBeritaAcara::route('/{record}'),
         ];
     }
 }

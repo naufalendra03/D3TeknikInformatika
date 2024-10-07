@@ -17,10 +17,10 @@ return new class extends Migration
             $table->text('isi'); // Isi berita acara
             $table->string('slug')->unique(); // Slug harus unik
             $table->string('gambar')->nullable(); // Gambar opsional
-            $table->string('author'); // Penulis berita acara
-            $table->string('category'); // Kategori berita acara
-            $table->date('published_date')->nullable(); // Tanggal publikasi opsional
-            $table->json('tags')->nullable(); // Menyimpan tags sebagai array JSON
+            $table->dropColumn('author'); // Penulis berita acara
+            $table->dropColumn('category'); // Kategori berita acara
+            $table->dateTime('published_date')->nullable(); // Tanggal publikasi opsional
+            $table->dropColumn('tags')->nullable(); // Menyimpan tags sebagai array JSON
             $table->timestamps(); // Timestamps untuk created_at dan updated_at
         });
     }
@@ -31,5 +31,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('berita_acaras');
+        Schema::table('berita_acaras', function (Blueprint $table) {
+            $table->string('author')->nullable();
+    });
+    
     }
 };

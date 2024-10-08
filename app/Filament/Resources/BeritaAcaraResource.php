@@ -23,6 +23,10 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TagsInput;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+
+
 
 class BeritaAcaraResource extends Resource
 {
@@ -35,7 +39,7 @@ class BeritaAcaraResource extends Resource
     // Ubah label di navigasi sidebar
     protected static ?string $navigationLabel = 'Berita Acara';
     
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
 {
@@ -65,7 +69,7 @@ class BeritaAcaraResource extends Resource
 
             Forms\Components\Grid::make(2)
                 ->schema([
-                    FileUpload::make('gambar')
+                    SpatieMediaLibraryFileUpload::make('gambar')
                     ->label('Upload Image'),
 
 
@@ -114,7 +118,7 @@ class BeritaAcaraResource extends Resource
                 // Kolom untuk menampilkan tags
                 
                 // Kolom untuk menampilkan gambar
-                ImageColumn::make('gambar')
+                SpatieMediaLibraryImageColumn::make('gambar')
                     ->label('Image'),
             ])
             ->filters([

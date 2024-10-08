@@ -17,3 +17,7 @@ Route::get('/profile', function () {
 Route::get('/alumni', function () {
     return view('alumni');
 });
+
+Route::get('halaman', function () {
+    return view('halaman');
+});

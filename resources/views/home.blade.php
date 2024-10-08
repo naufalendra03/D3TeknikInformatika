@@ -3,7 +3,11 @@
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-8 lg:px-6">
             <div class="font-light text-gray-500 sm:text-lg">
                 <h1 class="mb-4 lg:text-5xl text-4xl  tracking-tight font-extrabold text-primary-700 text-center lg:text-start">Program Studi Teknik Informatika - D3</h1>
-                <p class="mb-4 text-justify">We are strategists, designers and developers. Innovators and problem solvers. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need.</p>
+                <p class="mb-4 text-justify">Kami menawarkan pengalaman belajar yang inovatif dengan fokus pada penguasaan teknologi terkini. Didukung oleh dosen-dosen berpengalaman dan fasilitas modern, Anda akan dibekali dengan keterampilan praktis dan pemahaman mendalam tentang teknologi informasi. Jangan lewatkan kesempatan untuk bergabung dan menjadi bagian dari generasi profesional IT yang siap menciptakan inovasi masa depan!</p>
+                <a href="#" target="_blank" class="inline-flex items-center justify-center text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-7 py-3 text-center lg:inline-flex lg:w-auto w-full mb-2 lg:mb-0 transition">
+                    Daftar Disini
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </a>
             </div>
             <div class="grid grid-cols-2 gap-4 mt-8">
                 <img class="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1">
@@ -79,7 +83,7 @@
                     <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
                         <svg class="w-5 h-5 text-primary-600 lg:w-8 lg:h-8" xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M2 4a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2v11a2 2 0 0 1-2 2h-5.055l2.293 2.293a1 1 0 0 1-1.414 1.414l-2.828-2.828l-2.829 2.828a1 1 0 0 1-1.414-1.414L10.046 18H5a2 2 0 0 1-2-2V5a1 1 0 0 1-1-1m14.243 3.172a1 1 0 0 1 1.414 1.414l-4.236 4.236a1.01 1.01 0 0 1-1.428 0L9.88 10.709l-2.121 2.12a1 1 0 0 1-1.415-1.413l2.822-2.822a1.01 1.01 0 0 1 1.428 0l2.113 2.113z"/></g></svg>
                     </div>
-                    <h3 class="mb-2 text-xl font-bold text-white">Tecnopreneur</h3>
+                    <h3 class="mb-2 text-xl font-bold text-white">Technopreneur</h3>
                     <p class="text-gray-300 text-justify">Wirausaha atau pengusaha yang fokus pada pengembangan dan penerapan teknologi dalam bisnisnya. Mereka menggabungkan visi kewirausahaan dengan pemahaman mendalam tentang teknologi untuk menciptakan produk, layanan, atau solusi inovatif yang dapat menghasilkan nilai dan keuntungan dalam pasar.</p>
                 </div>
             </div>

@@ -12,7 +12,11 @@
     h5,
     p,
     a,
-    cite {
+    cite,
+    span,
+    tr,
+    td,
+    li {
         font-family: "Plus Jakarta Sans";
     }
 }

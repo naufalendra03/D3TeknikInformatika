@@ -1,5 +1,5 @@
 <header>
-    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 ">
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="#" class="flex items-center">
                 <img src="{{asset('img/logodti.png')}}" class="mr-3 h-12 sm:h-16" alt="D3-TI Logo" />
@@ -16,22 +16,22 @@
             <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                 <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
-                        <a href="/" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent font-bold lg:text-primary-700 lg:p-0 transition" aria-current="page">Beranda</a>
+                        <a href="/" class="block py-2 pr-4 pl-3 rounded {{ Request::is('/') ? 'text-white bg-primary-700 lg:bg-transparent lg:text-primary-700 font-bold' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700' }} lg:p-0 transition" aria-current="page">Beranda</a>
                     </li>
                     <li>
-                        <a href="/profile" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 transition">Profil</a>
+                        <a href="/profile" class="block py-2 pr-4 pl-3 rounded {{ Request::is('profile') ?'text-white bg-primary-700 lg:bg-transparent lg:text-primary-700 font-bold' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700' }} lg:p-0 transition">Profil</a>
                     </li>
                     <li>
-                        <a href="/akademik" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 transition">Akademik</a>
+                        <a href="/akademik" class="block py-2 pr-4 pl-3 rounded {{ Request::is('akademik') ?'text-white bg-primary-700 lg:bg-transparent lg:text-primary-700 font-bold' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700' }} lg:p-0 transition">Akademik</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 transition">Berita</a>
+                        <a href="/berita" class="block py-2 pr-4 pl-3 rounded {{ Request::is('berita') ?'text-white bg-primary-700 lg:bg-transparent lg:text-primary-700 font-bold' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700' }} lg:p-0 transition">Berita</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 transition">Himpunan </a>
+                        <a href="/himpunan" class="block py-2 pr-4 pl-3 rounded {{ Request::is('himpunan') ?'text-white bg-primary-700 lg:bg-transparent lg:text-primary-700 font-bold' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700' }} lg:p-0 transition">Himpunan</a>
                     </li>
                     <li>
-                        <a href="/alumni" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 transition">Alumni</a>
+                        <a href="/alumni" class="block py-2 pr-4 pl-3 rounded {{ Request::is('alumni') ?'text-white bg-primary-700 lg:bg-transparent lg:text-primary-700 font-bold' : 'text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700' }} lg:p-0 transition">Alumni</a>
                     </li>
                 </ul>
             </div>

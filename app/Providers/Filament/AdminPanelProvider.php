@@ -25,7 +25,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('login_user')
+            ->path('login_admin')
             ->passwordReset()
             ->profile()
             ->login()

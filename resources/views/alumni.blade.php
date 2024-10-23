@@ -76,6 +76,14 @@
                             <td>2025</td>
                             <td>82</td>
                         </tr>
+                        <tr class="font-medium text-gray-900 whitespace-nowrap">
+                            <td>3</td>
+                            <td>Rafi Darodjattuzaki</td>
+                            <td>A22.2022.029</td>
+                            <td>5.00</td>
+                            <td>2025</td>
+                            <td>82</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>  

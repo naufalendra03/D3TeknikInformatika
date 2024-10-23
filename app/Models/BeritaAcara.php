@@ -12,28 +12,24 @@ class BeritaAcara extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $casts = [
-        'tags' => 'array', // Menandai kolom tags sebagai array
-    ];
-
     protected $fillable = [
-        'judul', 'slug', 'isi', 'author', 'category', 'published_date', 'tags',
+        'judul', 'isi', 'slug', 'gambar', 'published_date'
     ];
+    
 
-    // Mutator untuk membuat slug otomatis dari judul
-    public function setJudulAttribute($value)
+    protected static function boot()
     {
-        $this->attributes['judul'] = $value;
+        parent::boot();
 
-        // Hanya set slug jika slug belum ada
-        if (!isset($this->attributes['slug']) || empty($this->attributes['slug'])) {
-            $this->attributes['slug'] = Str::slug($value, '-');
-        }
+        static::saving(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = Str::slug($model->judul);
+            }
+        });
     }
 
-    // Konfigurasi Spatie Media Library
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('images')->singleFile(); // Koleksi untuk gambar
+        $this->addMediaCollection('gambar')->singleFile(); // Koleksi untuk gambar
     }
 }

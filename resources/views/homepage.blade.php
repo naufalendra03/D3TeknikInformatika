@@ -1,9 +1,10 @@
-<x-layout     <section class="">
+<x-layout>     
+    <section class="">
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-8 lg:px-6">
             <div class="font-light text-gray-500 sm:text-lg">
                 <h1 class="mb-4 lg:text-5xl text-4xl  tracking-tight font-extrabold text-primary-700 text-center lg:text-start">Program Studi Teknik Informatika - D3</h1>
                 <p class="mb-4 text-justify">Kami menawarkan pengalaman belajar inovatif dengan fokus pada teknologi terkini. Didukung dosen berpengalaman dan fasilitas modern, Anda akan dibekali keterampilan praktis serta pemahaman mendalam tentang IT. Bergabunglah dan jadilah generasi profesional yang siap menciptakan inovasi masa depan!</p>
-                <a href="#" target="_blank" class="inline-flex items-center justify-center text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-7 py-3 text-center lg:inline-flex lg:w-auto w-full mb-2 lg:mb-0 transition">
+                <a href="https://pmb.dinus.ac.id/" target="_blank" class="inline-flex items-center justify-center text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-7 py-3 text-center lg:inline-flex lg:w-auto w-full mb-2 lg:mb-0 transition">
                     Daftar Disini
                     <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </a>
@@ -190,7 +191,7 @@
                             <span class="text-sm">14 days ago</span>
                         </div> --}}
                         <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">How to quickly deploy a static website</h3>
-                        {{-- <p class="mb-5 font-light text-gray-500">Static websites are now used to bootstrap lots of websites and are becoming the basis</p> --}}
+                        {{-- <p class="mb-5 font-light text-gray-500">Static websites are now used to bootstrap lots of websites and are becoming the basis</p>--}}
                     </article>
                 </a>
             </div>  

@@ -2,7 +2,7 @@
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-6">
         <div class="lg:flex lg:justify-between lg:items-center">
             <div class="mb-6 lg:mb-0">
-                    <a href="#" class="flex justify-center">
+                    <a href="https://dinus.ac.id/" target="_blank" class="flex justify-center">
                         <img src="{{asset('img/logonondti.png')}}" class="h-32" alt="D3-TI Logo" />
                     </a>
             </div>

@@ -1,26 +1,17 @@
 <x-layout >
-    <section >
+    <section>
         <div class="gap-8 items-start py-8 px-4 mx-auto max-w-screen-xl xl:gap-12 md:grid md:grid-cols-2 sm:py-16 align-top">
             <div class="mt-4 md:mt-0">
-                <h2 class="text-center mb-4 text-2xl tracking-tight font-extrabold text-gray-700 ">Visi</h2>
-                <p class="text-justify mb-6 text-gray-500">“Menjadi Pilihan Utama Dalam Pendidikan Vokasi Bidang Teknologi Informasi, dan Mampu Menghasilkan Lulusan Dengan Keahlian Teknologi Web dan Mobile yang Cakap Dalam Bidang Technopreneurship”.</p>
+                <h2 class="text-center mb-4 text-2xl tracking-tight font-extrabold text-gray-700">Visi</h2>
+                <div class="text-justify mb-6 text-gray-500">{!! str_replace('<p><br></p>', '', $visiMisi->visi) !!}</div>
             </div>
             <div class="mt-4 md:mt-0">
                 <h2 class="text-center mb-4 text-2xl tracking-tight font-extrabold text-gray-700">Misi</h2>
-                <ul class="space-y-1 text-gray-500 list-disc text-justify px-4 lg:px-0">
-                    <li>
-                        Tuntutan dosen profesional yang bermutu dan Ahli dalam bidang kompetensi yang diajarkan, dan pengembangkan riset sesuai dengan kebutuhan keilmuan pada program studi.
-                    </li>
-                    <li>
-                        Menyelenggarakan pendidikan berbasis teknologi informasi yang profesional dan bermutu yang cakap dalam bidang technopreuner, dan meningkatkan kompetensi mahasiswa dengan sertifikasi uji kompetensi pada bidang web dan mobile programming.
-                    </li>
-                    <li>
-                        Menyelengarakan kerjasama dengan berbagai lembaga pihak luar, sehingga dapat mengontrol penyelengaraan pendidikan yang selalu mutakhir dan dapat diterapkan secara tepat guna.
-                    </li>
-                </ul>
+                <div class="text-justify mb-6 text-gray-500">{!! str_replace('<p><br></p>', '', $visiMisi->misi) !!}</div>
             </div>
         </div>
-    </section>
+    </section>      
+
     <section class="">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
             <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">

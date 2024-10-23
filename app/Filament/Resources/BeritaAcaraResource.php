@@ -26,8 +26,6 @@ use Illuminate\Support\Str;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
-
-
 class BeritaAcaraResource extends Resource
 {
     protected static ?string $model = BeritaAcara::class;
@@ -42,46 +40,49 @@ class BeritaAcaraResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
-{
-    return $form
-        ->schema([
-            Forms\Components\Grid::make(2)
-                ->schema([
-                    TextInput::make('judul')
-                        ->live(onBlur: true)
-                        ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set) {
-                            if ($operation === 'edit') {
-                                return;
-                            }
-                            $set('slug', Str::slug($state));
-                        }),
-                    TextInput::make('slug')
-                        ->label('Slug')
-                        ->rules(['required', 'unique:berita_acaras,slug'])
-                        ->helperText('Auto-generated from the title if left blank'),
-                ]),
+    {
+        return $form
+            ->schema([
+                Forms\Components\Grid::make(2)
+                    ->schema([
+                        TextInput::make('judul')
+                            ->live(onBlur: true) // Slug diperbarui setelah judul selesai diedit
+                            ->afterStateUpdated(function ($state, Forms\Set $set, $get) {
+                                // Jika slug belum diubah oleh pengguna, slug akan mengikuti perubahan judul
+                                if (!$get('slug') || empty($get('slug'))) {
+                                    $set('slug', Str::slug($state));
+                                }
+                            })
+                            ->required(),
+                        TextInput::make('slug')
+                            ->label('Slug')
+                            ->rules(function ($record) {
+                                return ['required', 'unique:berita_acaras,slug,' . ($record ? $record->id : 'NULL')];
+                            })
+                            ->helperText('Slug will be automatically updated based on the title')
+                            ->required()
+                            ->live(onBlur: true), // Slug bisa diperbarui secara manual oleh user, jika perlu
+                    ]),
 
-            // RichEditor ditempatkan di luar Grid
-            RichEditor::make('isi')
-                ->label('Content')
-                ->required()
-                ->columnSpan('full'), // Membuatnya mengambil seluruh lebar form
+                // RichEditor ditempatkan di luar Grid
+                RichEditor::make('isi')
+                    ->label('Content')
+                    ->required()
+                    ->columnSpan('full'), // Membuatnya mengambil seluruh lebar form
 
-            Forms\Components\Grid::make(2)
-                ->schema([
-                    SpatieMediaLibraryFileUpload::make('gambar')
-                    ->label('Upload Image'),
+                Forms\Components\Grid::make(2)
+                    ->schema([
+                        SpatieMediaLibraryFileUpload::make('gambar')
+                        ->label('Upload Image'),
 
+                        DatePicker::make('published_date')
+                            ->label('Published Date')
+                            ->default(now()) // Set default value to today's date
+                            ->required(),
+                    ]),
 
-                    DatePicker::make('published_date')
-                        ->label('Published Date')
-                        ->default(now()) // Set default value to today's date
-                        ->required(),
-                ]),
-
-            
-        ]);
-}
+            ]);
+    }
 
     public static function table(Table $table): Table
     {

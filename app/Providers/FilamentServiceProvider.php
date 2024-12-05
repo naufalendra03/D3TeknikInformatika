@@ -9,4 +9,4 @@ use Filament\Navigation\NavigationGroup;
 
 NavigationGroup::make()
     ->label('Halaman')  // Menambahkan teks pembatas di sidebar
-    ->collapsed();    
+    ->collapsed();

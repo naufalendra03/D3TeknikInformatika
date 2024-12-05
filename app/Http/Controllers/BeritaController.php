@@ -3,55 +3,76 @@
 namespace App\Http\Controllers;
 
 use App\Models\BeritaAcara;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class BeritaController extends Controller
 {
     // Method untuk menampilkan semua berita acara
     public function index()
     {
-        $berita_acara = BeritaAcara::all();
+        // Ambil semua data berita acara
+        $berita_acara = BeritaAcara::with('media')->get(); // Pastikan media di-load untuk optimasi
         return view('berita', compact('berita_acara'));
     }
 
-    // Method untuk menyimpan data berita acara baru
+    public function search(Request $request)
+    {
+        $query = $request->input('q'); // Kata kunci pencarian
+        $results = BeritaAcara::where('judul', 'like', "%$query%")
+            ->orWhere('isi', 'like', "%$query%")
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
-    public function store(Request $request)
-{
-    // Validasi input
-    $validatedData = $request->validate([
-        'judul' => 'required',
-        'isi' => 'required',
-        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+        return view('search', compact('results', 'query'));
+    }
+    public function show($slug)
+    {
+        $berita = BeritaAcara::where('slug', $slug)->firstOrFail();
 
-    // Buat data Berita Acara tanpa gambar terlebih dahulu
-    $beritaAcara = BeritaAcara::create([
-        'judul' => $validatedData['judul'],
-        'isi' => $validatedData['isi'],
-        'published_date' => now(),
-        'slug' => \Illuminate\Support\Str::slug($validatedData['judul']),
-    ]);
-
-    // Proses upload gambar menggunakan Spatie Media Library
-    if ($request->hasFile('gambar')) {
-        // Tambahkan file ke media collection dan dapatkan URL
-        $beritaAcara->addMediaFromRequest('gambar')->toMediaCollection('gambar');
-        $gambarUrl = $beritaAcara->getFirstMediaUrl('gambar'); // Dapatkan URL gambar
-
-        // Log untuk memastikan URL gambar tidak kosong
-        Log::info('Gambar URL: ' . $gambarUrl);
-
-        // Simpan URL gambar ke kolom 'gambar' di database
-        $beritaAcara->gambar = $gambarUrl;
-        $beritaAcara->save(); // Simpan perubahan
+        return view('show', compact('berita'));
     }
 
-    // Redirect ke halaman index dengan pesan sukses
-    return redirect()->route('berita.index')->with('success', 'Berita acara berhasil ditambahkan!');
-}
 
-    
+    // Method untuk menyimpan data berita acara baru
+    public function store(Request $request)
+    {
+        // Validasi input
+        $validatedData = $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required|string',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Buat data Berita Acara tanpa gambar terlebih dahulu
+        $beritaAcara = BeritaAcara::create([
+            'judul' => $validatedData['judul'],
+            'isi' => $validatedData['isi'],
+            'published_date' => now(),
+            'slug' => \Illuminate\Support\Str::slug($validatedData['judul']),
+        ]);
+
+        // Proses upload gambar menggunakan Spatie Media Library
+        try {
+            if ($request->hasFile('gambar')) {
+                // Tambahkan file ke media collection
+                $beritaAcara->addMediaFromRequest('gambar')->toMediaCollection('gambar');
+
+                // Log untuk memastikan gambar berhasil ditambahkan
+                Log::info('Gambar berhasil diupload untuk Berita Acara ID: ' . $beritaAcara->id);
+            }
+        } catch (\Exception $e) {
+            // Log jika ada error
+            Log::error('Error saat mengupload gambar: ' . $e->getMessage());
+
+            Log::info('Gambar URL: ' . $beritaAcara->getFirstMediaUrl('gambar'));
+
+        }
+        
+
+        // Redirect ke halaman index dengan pesan sukses
+        return redirect()->route('berita.index')->with('success', 'Berita acara berhasil ditambahkan!');
+    }
 }

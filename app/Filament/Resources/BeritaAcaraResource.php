@@ -39,6 +39,8 @@ class BeritaAcaraResource extends Resource
     
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
+    protected static ?string $navigationGroup = 'Publikasi';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -72,8 +74,7 @@ class BeritaAcaraResource extends Resource
 
                 Forms\Components\Grid::make(2)
                     ->schema([
-                        SpatieMediaLibraryFileUpload::make('gambar')
-                        ->label('Upload Image'),
+                        FileUpload::make('gambar')->image()->directory('galeri-images')->required(),
 
                         DatePicker::make('published_date')
                             ->label('Published Date')
@@ -119,8 +120,7 @@ class BeritaAcaraResource extends Resource
                 // Kolom untuk menampilkan tags
                 
                 // Kolom untuk menampilkan gambar
-                SpatieMediaLibraryImageColumn::make('gambar')
-                    ->label('Image'),
+                ImageColumn::make('gambar'),
             ])
             ->filters([
                 //

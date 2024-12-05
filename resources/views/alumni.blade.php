@@ -93,7 +93,9 @@
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6 lg:py-16">
             <div class="mx-auto max-w-screen-md text-center lg:mb-16 mb-8">
                 <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-700 ">Informasi Alumni Teknik Informatika - D3</h2>
-                <p class="font-light text-gray-500 sm:text-xl"></p>
+                <p class="font-light text-gray-500 sm:text-xl"> Form Input Alumni </p>
+                <br>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSerHyp0gB2j8rmOtckjivG2E_h-Oye5pfIfKILN5DQJMpzITQ/viewform?embedded=true" width="780" height="382" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
             </div> 
         </div>
     </section>

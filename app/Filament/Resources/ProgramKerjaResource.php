@@ -31,6 +31,8 @@ class ProgramKerjaResource extends Resource
  protected static ?string $navigationLabel = 'Program Kerja';
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
+    protected static ?string $navigationGroup = 'Kemahasiswaan';
+
     public static function form(Form $form): Form
     {
         return $form

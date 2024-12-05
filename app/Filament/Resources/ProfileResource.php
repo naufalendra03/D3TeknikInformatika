@@ -21,6 +21,9 @@ class ProfileResource extends Resource
     protected static ?string $navigationLabel = 'Sambutan Ketua Progdi'; // Tambahkan ini
     
     protected static ?string $navigationIcon = 'heroicon-o-user-group'; // Ikon untuk profil
+    protected static ?string $pluralLabel = 'Sambutan Ketua Progdi';
+
+    protected static ?string $navigationGroup = 'Profile';
 
     public static function form(Form $form): Form
     {

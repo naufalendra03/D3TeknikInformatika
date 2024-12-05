@@ -17,7 +17,11 @@ class VisiMisiResource extends Resource
 
     protected static ?string $navigationLabel = 'Visi & Misi';
     protected static ?string $pluralModelLabel = 'Visi & Misi';
+    protected static ?string $navigationIcon = 'heroicon-o-light-bulb'; // Sesuaikan pilihan Anda
+
     protected static ?string $slug = 'visi-misi';
+
+    protected static ?string $navigationGroup = 'Profile';
 
     public static function form(Form $form): Form
     {

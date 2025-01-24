@@ -19,6 +19,8 @@ class AgendaResource extends Resource
 
     protected static ?string $pluralLabel = 'Agenda';
 
+    protected static ?string $navigationGroup = 'Publikasi';
+
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form

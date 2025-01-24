@@ -1,20 +1,55 @@
-<x-layout>     
-    <section class="">
+<x-layout>
+    <section class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-8 lg:px-6">
-            <div class="font-light text-gray-500 sm:text-lg">
-                <h1 class="mb-4 lg:text-5xl text-4xl  tracking-tight font-extrabold text-primary-700 text-center lg:text-start">Program Studi Teknik Informatika - D3</h1>
-                <p class="mb-4 text-justify">Kami menawarkan pengalaman belajar inovatif dengan fokus pada teknologi terkini. Didukung dosen berpengalaman dan fasilitas modern, Anda akan dibekali keterampilan praktis serta pemahaman mendalam tentang IT. Bergabunglah dan jadilah generasi profesional yang siap menciptakan inovasi masa depan!</p>
-                <a href="https://pmb.dinus.ac.id/" target="_blank" class="inline-flex items-center justify-center text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-7 py-3 text-center lg:inline-flex lg:w-auto w-full mb-2 lg:mb-0 transition">
-                    Daftar Disini
-                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mt-8">
-                <img class="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1">
-                <img class="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2">
-            </div>
+            @if ($homepageContent)
+                <div class="font-light text-gray-500 sm:text-lg">
+                    <h1 class="mb-4 lg:text-5xl text-4xl tracking-tight font-extrabold text-primary-700 text-center lg:text-start">
+                        {{ $homepageContent->title }}
+                    </h1>
+                    <p class="mb-4 text-justify">
+                        {{ $homepageContent->description }}
+                    </p>
+                    <a href="https://pmb.dinus.ac.id/" target="_blank" class="inline-flex items-center justify-center text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-7 py-3 text-center lg:inline-flex lg:w-auto w-full mb-2 lg:mb-0 transition">
+                        Daftar Disini
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-4 mt-8">
+                    <img id="image1" class="w-full rounded-lg transition-opacity duration-1000" src="{{ asset('storage/' . $homepageContent->images[0] ?? '') }}" alt="Image 1">
+                    <img id="image2" class="w-full rounded-lg transition-opacity duration-1000" src="{{ asset('storage/' . $homepageContent->images[1] ?? '') }}" alt="Image 2">
+                </div>
+            @endif
         </div>
     </section>
+
+    <script>
+        const images = @json($homepageContent->images);
+        const image1 = document.getElementById('image1');
+        const image2 = document.getElementById('image2');
+        let currentIndexes = [0, 1]; // Indeks awal gambar yang ditampilkan
+
+        // Fungsi untuk mengganti gambar
+        const updateImages = () => {
+            currentIndexes = currentIndexes.map(index => (index + 2) % images.length); // Perbarui indeks
+            image1.style.opacity = 0; // Mulai transisi opacity untuk gambar 1
+            image2.style.opacity = 0; // Mulai transisi opacity untuk gambar 2
+
+            setTimeout(() => {
+                image1.src = `/storage/${images[currentIndexes[0]]}`; // Perbarui src gambar 1
+                image2.src = `/storage/${images[currentIndexes[1]]}`; // Perbarui src gambar 2
+                image1.style.opacity = 1; // Kembalikan opacity gambar 1
+                image2.style.opacity = 1; // Kembalikan opacity gambar 2
+            }, 1000); // Tunggu transisi selesai sebelum mengganti gambar
+        };
+
+        // Jalankan fungsi setiap 5 detik
+        setInterval(updateImages, 5000);
+    </script>
+    
+
+    
     <section class="">
         <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-12 lg:px-6">
             <h2 class="mb-8 lg:mb-14 text-3xl tracking-tight font-extrabold text-gray-700 text-center">Statistik Program Studi Teknik Informatika - D3</h2>
@@ -89,113 +124,79 @@
             </div>
         </div>
       </section>
-      <section class="">
-        <div class="mb-8">
-            <h2 class=" text-3xl tracking-tight font-extrabold text-gray-700 text-center">Sambutan Ketua Program Studi Teknik Infromatika - D3</h2>
+      <section class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+            <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-700">Berita Terbaru</h2>
         </div>
-        <div class="gap-0 items-start py-8 px-4 mx-auto max-w-screen-lg xl:gap-16 md:grid md:grid-cols-12 sm:py-16 lg:px-6"  >
-            <img class="w-2/4 mx-auto md:w-4/5 col-span-4 md:ml-0" src="{{ asset('img/kaprodi.jpg') }}" alt="dashboard image">
-            <div class="mt-4 md:mt-0 col-span-8">
-                <figure class="max-w-screen-md h-full mx-auto">
-                    <blockquote class="text-sm font-medium text-gray-900 text-justify">
-                        <p class="mb-4">Selamat datang di Program Diploma – Informatika Fakultas Ilmu Komputer – Universitas Dian Nuswantoro Informatika adalah disiplin ilmu yang sangat dinamis, menarik, dan menantang. Komputer merupakan bagian integral dari setiap aspek kehidupan masyarakat dan modern yang membuat bidang ilmu ini berkembang dan berubah secara terus menerus dan cepat.</p>
-                        <p class="mb-4">Sebagai mahasiswa di Program ini, Anda akan dihadapkan pada pembelajaran inspirasional berkualitas dengan dosen yang bersemangat mengembangkan dan menyampaikan pengajaran, tetap menjadi yang terdepan dalam mengembangkan metode pengajaran, pembelajaran dan penilaian yang inovatif dan secara konsisten menggunakan teknologi termasuk teknologi pembelajaran yang baik untuk kelas kegiatan tetapi juga untuk kegiatan belajar di luar batas kelas sebagai salah satu cara keberhasilan dalam menunjang belajar siswa. Pengajaran dan pembelajaran diinformasikan oleh kebutuhan industri dan dimensi industri praktis yang terintegrasi ke dalam banyak kegiatan siswa.</p>
-                        <p class="mb-4">Siswa akan diberikan kesempatan untuk mengerjakan masalah dunia nyata yang disediakan oleh industri, untuk diajar oleh para profesional TI dan mengunjungi lingkungan bisnis yang mengembangkan dan menggunakan teknologi informasi dan komunikasi. Kami sangat bangga dengan lulusan kami dan prestasi mereka; mereka adalah profesional TI yang sangat terampil terutama di bidang pemrograman web dan seluler, mengejar karir yang sukses dalam berbagai konteks di pasar tenaga kerja global yang kompetitif. Kepada semua siswa kami, kami di Program Diploma Informatika ingin mengucapkan pengalaman belajar yang menginspirasi, produktif, dan sukses</p>
-                    </blockquote>
-                    <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
-                        <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500">
-                            <cite class="pe-3 text-nowrap font-bold text-gray-900 not-italic">Dr. Fikri Budiman, M.Kom</cite>
-                            <cite class="ps-3 text-sm text-gray-500 ">Ketua Program Studi D3 – Teknik Informatika</cite>
+        <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach ($berita_acara as $berita)
+                <article
+                    class="p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-200 h-full flex flex-col">
+                    <!-- Menampilkan gambar dari koleksi media -->
+                    <div class="bg-white rounded-lg overflow-hidden">
+                        <img 
+                            class="w-full h-full object-cover" 
+                            src="{{ asset('storage/' . $berita->gambar) }}" 
+                            alt="{{ $berita->judul }}">
+                    </div>
+                    
+                    <div class="flex flex-col flex-grow mt-4">
+                        <div class="flex justify-between items-center text-gray-500 mb-2">
+                            <!-- Format tanggal -->
+                            <span class="text-sm">{{ $berita->published_date->format('d M Y') }}</span>
                         </div>
-                    </figcaption>
-                </figure>
-            </div>
+        
+                        <h3 class="mb-2 text-lg font-bold text-gray-900">{{ $berita->judul }}</h3>
+        
+                        <p class="mb-4 font-light text-gray-500 line-clamp-3 overflow-hidden text-ellipsis">
+                            {{ \Illuminate\Support\Str::limit(strip_tags($berita->isi), 100) }}
+                        </p>
+        
+                        <!-- Tombol Read More -->
+                        <div class="mt-auto">
+                            <a 
+                                href="{{ route('berita.show', $berita->slug) }}" 
+                                class="inline-block bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            @endforeach
         </div>
-    </section>
-    <section class="">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
+        <section class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
             <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-                <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-700 ">Berita Acara</h2>
-                <p class="font-light text-gray-500 sm:text-xl"></p>
-            </div> 
-            <div class="grid gap-8 lg:grid-cols-3">
-                <a href="#" class="block">
-                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-200">
-                        <img class="h-auto max-w-full rounded-lg mb-6" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="image description">
-                        <div class="flex justify-between items-center mb-5 text-gray-500">
-                            <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
-                                Tutorial
-                            </span>
-                            <span class="text-sm">14 days ago</span>
+                <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-700">Program Kerja Himpunan</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @forelse ($programKerjas as $programKerja)
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <!-- Gambar -->
+                        <img 
+                            src="{{ asset('storage/' . $programKerja->gambar) }}" 
+                            alt="{{ $programKerja->judul }}" 
+                            class="w-full h-64 object-cover"
+                        >
+            
+                        <!-- Konten -->
+                        <div class="p-6">
+                            <h4 class="text-xl font-bold text-gray-800">{{ $programKerja->judul }}</h4>
+                            <p class="text-gray-600 text-base mb-4 line-clamp-2">
+                                {{ strip_tags($programKerja->deskripsi) }}
+                            </p>
+                            <a 
+                                href="{{ route('programkerja.show', $programKerja->slug) }}" 
+                                class="text-blue-500 text-base font-medium hover:underline"
+                            >
+                                Selengkapnya
+                            </a>
                         </div>
-                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">How to quickly deploy a static website</h3>
-                        <p class="mb-5 font-light text-gray-500">Static websites are now used to bootstrap lots of websites and are becoming the basis</p>
-                    </article>
-                </a>
-                <a href="#" class="block">
-                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-200">
-                        <img class="h-auto max-w-full rounded-lg mb-6" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="image description">
-                        <div class="flex justify-between items-center mb-5 text-gray-500">
-                            <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
-                                Tutorial
-                            </span>
-                            <span class="text-sm">14 days ago</span>
-                        </div>
-                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">How to quickly deploy a static website</h3>
-                        <p class="mb-5 font-light text-gray-500">Static websites are now used to bootstrap lots of websites and are becoming the basis</p>
-                    </article>
-                </a>
-                <a href="#" class="block">
-                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-200">
-                        <img class="h-auto max-w-full rounded-lg mb-6" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="image description">
-                        <div class="flex justify-between items-center mb-5 text-gray-500">
-                            <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
-                                Tutorial
-                            </span>
-                            <span class="text-sm">14 days ago</span>
-                        </div>
-                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">How to quickly deploy a static website</h3>
-                        <p class="mb-5 font-light text-gray-500">Static websites are now used to bootstrap lots of websites and are becoming the basis</p>
-                    </article>
-                </a>
-            </div>  
-        </div>
-    </section>
-    <section class="">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
-            <div class="mx-auto max-w-screen-xl text-center lg:mb-16 mb-8">
-                <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-700 ">Program Kerja Himpunan Mahasiswa Diploma Teknik Informatika</h2>
-                <p class="font-light text-gray-500 sm:text-xl"></p>
-            </div> 
-            <div class="grid gap-8 lg:grid-cols-3">
-                <a href="#" class="block">
-                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-200">
-                        <img class="h-auto max-w-full rounded-lg mb-6" src="{{asset('img/WLP.jpg')}}" alt="image description">
-                        {{-- <div class="flex justify-between items-center mb-5 text-gray-500">
-                            <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
-                                Tutorial
-                            </span>
-                            <span class="text-sm">14 days ago</span>
-                        </div> --}}
-                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">How to quickly deploy a static website</h3>
-                        {{-- <p class="mb-5 font-light text-gray-500">Static websites are now used to bootstrap lots of websites and are becoming the basis</p> --}}
-                    </article>
-                </a>
-                <a href="#" class="block">
-                    <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg hover:bg-gray-100 transition duration-200">
-                        <img class="h-auto max-w-full rounded-lg mb-6" src="{{asset('img/uiux.jpg')}}" alt="image description">
-                        {{-- <div class="flex justify-between items-center mb-5 text-gray-500">
-                            <span class="bg-primary-100 text-primary-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
-                                Tutorial
-                            </span>
-                            <span class="text-sm">14 days ago</span>
-                        </div> --}}
-                        <h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">How to quickly deploy a static website</h3>
-                        {{-- <p class="mb-5 font-light text-gray-500">Static websites are now used to bootstrap lots of websites and are becoming the basis</p>--}}
-                    </article>
-                </a>
-            </div>  
-        </div>
-    </section>
-    
+                    </div>
+                @empty
+                    <p class="text-center text-gray-600 text-lg">
+                        Belum ada program kerja untuk kategori ini.
+                    </p>
+                @endforelse
+            </div>
+        </section>
 </x-layout>

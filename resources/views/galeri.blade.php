@@ -1,28 +1,16 @@
 <x-layout>
-    <section class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6 lg:py-16">
-        <div class="text-center mb-8">
-            <h2 class="text-3xl font-extrabold text-gray-800">Galeri Kegiatan</h2>
-            <p class="text-gray-600">Lihat berbagai dokumentasi kegiatan kami.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($galeris as $galeri)
-                <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-                    <img 
-                        class="rounded-t-lg w-full h-48 object-cover" 
-                        src="{{ asset('storage/' . $galeri->gambar) }}" 
-                        alt="{{ $galeri->judul }}"
-                    >
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Galeri</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @foreach ($kategoris as $kategori)
+                <a href="{{ route('kategori.show', $kategori->id) }}" class="block bg-white shadow rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                    <img src="{{ asset('storage/' . $kategori->gambar) }}" alt="{{ $kategori->judul }}" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <h3 class="font-bold text-gray-800">{{ $galeri->judul }}</h3>
-                        <p class="text-sm text-gray-600">{{ Str::limit($galeri->deskripsi, 100) }}</p>
+                        <h2 class="text-xl font-bold mb-2">{{ $kategori->judul }}</h2>
+                        <p class="text-gray-600">Jumlah Foto: {{ $kategori->galerinya->count() }}</p>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
-
-        <div class="mt-6">
-            {{ $galeris->links() }}
-        </div>
-    </section>
+    </div>
 </x-layout>

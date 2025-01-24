@@ -53,6 +53,7 @@ class BeritaController extends Controller
             'published_date' => now(),
             'slug' => \Illuminate\Support\Str::slug($validatedData['judul']),
         ]);
+        
 
         // Proses upload gambar menggunakan Spatie Media Library
         try {
@@ -70,6 +71,8 @@ class BeritaController extends Controller
             Log::info('Gambar URL: ' . $beritaAcara->getFirstMediaUrl('gambar'));
 
         }
+
+        
         
 
         // Redirect ke halaman index dengan pesan sukses

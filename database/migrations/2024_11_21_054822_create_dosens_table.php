@@ -10,9 +10,9 @@ class CreateDosensTable extends Migration
     {
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Kolom nama dosen
-            $table->string('nip');  // Kolom NIP
-            $table->string('photo')->nullable(); // Kolom foto (nullable)
+            $table->string('nama');
+            $table->string('nip')->nullable();
+            $table->string('foto')->nullable(); // Menyimpan path foto
             $table->timestamps();
         });
     }

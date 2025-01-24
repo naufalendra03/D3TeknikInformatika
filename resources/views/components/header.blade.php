@@ -37,6 +37,8 @@
                                 <li><a href="/profile/tujuan" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('profile/tujuan') ? 'font-bold text-primary-700' : '' }}">Tujuan</a></li>
                                 <li><a href="/profile/sasaran" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('profile/sasaran') ? 'font-bold text-primary-700' : '' }}">Sasaran</a></li>
                                 <li><a href="/profile/fasilitas" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('profile/fasilitas') ? 'font-bold text-primary-700' : '' }}">Fasilitas</a></li>
+                                <li><a href="/profile/akreditasi" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('profile/akreditas') ? 'font-bold text-primary-700' : '' }}">Akreditasi</a></li>
+                                <li><a href="/profile/mitra" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('profile/mitra') ? 'font-bold text-primary-700' : '' }}">Mitra</a></li>
                             </ul>
                         </div>
                     </li>                    
@@ -53,7 +55,7 @@
                         <div id="dropdownAkademik" class="hidden z-10 w-44 bg-white rounded-lg shadow">
                             <ul class="py-1 text-sm text-gray-700">
                                 <li><a href="/akademik/kurikulum" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('akademik/kurikulum') ? 'font-bold text-primary-700' : '' }}">Kurikulum</a></li>
-                                <li><a href="/akademik/suasana" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('akademik/suasana') ? 'font-bold text-primary-700' : '' }}">Suasana Akademik</a></li>
+                                <li><a href="/akademik/suasana-akademik" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('akademik/suasana') ? 'font-bold text-primary-700' : '' }}">Suasana Akademik</a></li>
                                 <li><a href="/akademik/dosen" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('akademik/dosen') ? 'font-bold text-primary-700' : '' }}">Dosen</a></li>
                                 <li><a href="/akademik/sistem_monitoring" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('akademik/sistem_monitoring') ? 'font-bold text-primary-700' : '' }}">Sistem Monitoring</a></li>
                             </ul>
@@ -90,11 +92,8 @@
                         </button>
                         <div id="dropdownKemahasiswaan" class="hidden z-10 w-44 bg-white rounded-lg shadow">
                             <ul class="py-1 text-sm text-gray-700">
-                            <li><span class="block px-4 py-2 text-gray-700 cursor-default hover:bg-gray-100">HM DTI</span></li>
-                                <ul class="pl-4">
-                                <li><a href="/himpunan/2024" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('himpunan/2024') ? 'font-bold text-primary-700' : '' }}">HM DTI 2024</a></li>
-                                <li><a href="/himpunan/2023" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('himpunan/2023') ? 'font-bold text-primary-700' : '' }}">HM DTI 2023</a></li>
-                                </ul>
+                                
+                                <li><a href="/himpunan" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('himpunan/2024') ? 'font-bold text-primary-700' : '' }}">HM-DTI</a></li>
                                 <li><a href="/kemahasiswaan/alumni" class="block px-4 py-2 hover:bg-gray-100 {{ Request::is('kemahasiswaan/alumni') ? 'font-bold text-primary-700' : '' }}">Alumni</a></li>
                             </ul>
                         </div>

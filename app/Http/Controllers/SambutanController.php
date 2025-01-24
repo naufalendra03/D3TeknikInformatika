@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\SambutanKetua;
 use Illuminate\Http\Request;
 
 class SambutanController extends Controller
@@ -9,12 +9,9 @@ class SambutanController extends Controller
     public function index()
     {
         // Data untuk ditampilkan di halaman
-        $data = [
-            'title' => 'Sambutan Ketua Program Studi',
-            'sambutan' => 'Selamat datang di Program Studi D3 Teknik Informatika Universitas Dian Nuswantoro. Kami berkomitmen untuk memberikan pendidikan terbaik...',
-        ];
+        $data = SambutanKetua::first();
+        return view('sambutan', compact('data'));
 
         // Memanggil view sambutan
-        return view('sambutan', $data);
     }
 }

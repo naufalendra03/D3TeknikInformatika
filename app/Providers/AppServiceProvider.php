@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Facades\Filament;
 
 class AppServiceProvider extends ServiceProvider
 {

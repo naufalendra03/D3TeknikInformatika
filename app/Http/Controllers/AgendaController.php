@@ -10,20 +10,11 @@ class AgendaController extends Controller
 {
     public function index(Request $request)
     {
-        // Default bulan dan tahun saat ini jika tidak dipilih
-        $currentMonth = Carbon::now()->month;
-        $currentYear = Carbon::now()->year;
+        // Ambil semua agenda mulai dari hari ini ke depan
+    $agendas = Agenda::where('tanggal', '>=', Carbon::today())
+    ->orderBy('tanggal', 'asc')
+    ->get();
 
-        // Mengambil bulan dan tahun dari query string (filter)
-        $month = $request->input('month', $currentMonth);
-        $year = $request->input('year', $currentYear);
-
-        // Mengambil agenda berdasarkan bulan dan tahun, diurutkan berdasarkan tanggal
-        $agendas = Agenda::whereYear('tanggal', $year)
-            ->whereMonth('tanggal', $month)
-            ->orderBy('tanggal', 'asc')
-            ->get();
-
-        return view('agenda', compact('agendas', 'month', 'year'));
+    return view('agenda', compact('agendas'));
     }
 }

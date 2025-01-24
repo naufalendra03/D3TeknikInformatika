@@ -12,12 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('program_kerjas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama'); // Nama Program Kerja
-            $table->dateTime('tanggal_mulai'); 
-            $table->dateTime('tanggal_selesai');
-            $table->string('link_pendaftaran');
-            $table->timestamps();
+            $table->id(); // Primary key
+            $table->string('judul'); // Judul program kerja
+            $table->text('deskripsi'); // Deskripsi program kerja
+            $table->string('gambar')->nullable(); // Path gambar program kerja
+            $table->foreignId('kategori_id') // Kolom kategori_id
+                ->nullable() // Boleh null
+                ->constrained('kategori_himpunans') // Relasi dengan tabel kategori_himpunans
+                ->cascadeOnUpdate() // Update otomatis jika ID berubah
+                ->nullOnDelete(); // Set null jika data referensi dihapus
+            $table->timestamps(); // Kolom created_at dan updated_at
         });
     }
 

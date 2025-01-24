@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('galeris', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->text('deskripsi')->nullable();
-            $table->string('gambar'); // URL atau path gambar
+            $table->text('deskripsi');
+            $table->string('gambar');
+            $table->foreignId('kategori_id')->constrained();
+            $table->integer('bulan'); // Kolom bulan bertipe integer
+            $table->integer('tahun'); // Kolom tahun bertipe integer
             $table->timestamps();
         });
     }

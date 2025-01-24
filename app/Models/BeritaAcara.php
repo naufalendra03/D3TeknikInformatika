@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class BeritaAcara extends Model implements HasMedia
 {
@@ -45,6 +46,11 @@ class BeritaAcara extends Model implements HasMedia
                 $model->slug = Str::slug($model->judul);
             }
         });
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     /**

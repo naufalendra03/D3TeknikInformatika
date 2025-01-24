@@ -145,14 +145,23 @@
     <section class="">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:px-6">
             <div class="mx-auto max-w-screen-sm text-center lg:mb-12 mb-6">
-                <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-700 ">Kalender Akademik</h2>
-                <p class="font-light text-gray-500 sm:text-xl">Universitas Dian Nuswantoro 2024/2025</p>
-            </div> 
+                @php
+                    $kalender = \App\Models\KalenderAkademik::latest()->first(); // Ambil data terbaru
+                @endphp
+                <h2 class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-700">Kalender Akademik</h2>
+                <p class="font-light text-gray-500 sm:text-xl">
+                    Universitas Dian Nuswantoro {{ $kalender->tahun ?? 'Belum Tersedia' }}
+                </p>
+            </div>
             <div class="max-w-3xl mx-auto">
-                <img class="w-full rounded-lg  shadow-lg" src="{{asset('img/kalender.jpeg')}}" alt="image description">
-            </div>  
+                @if($kalender && $kalender->gambar)
+                    <img class="w-full rounded-lg shadow-lg" src="{{ asset('storage/' . $kalender->gambar) }}" alt="Kalender Akademik">
+                @else
+                    <p class="text-gray-500 text-center">Kalender belum tersedia.</p>
+                @endif
+            </div>
         </div>
-    </section>
+    </section>    
     <section class="">
         <div class="pb-8 px-4 mx-auto max-w-screen-xl  lg:px-6">
             <div class=" bg-primary-600 p-8 rounded-lg">
